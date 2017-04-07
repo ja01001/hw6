@@ -17,8 +17,8 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
     private static final int GET_CODE = 100;
     ListView listview;
+    ArrayList<ArrayList<data>> sss = new ArrayList<>(10);
     ArrayList<data> store = new ArrayList<>();
-    ArrayList<String> aaaa = new ArrayList<>();
     ArrayList<String> CONNECT_LIST = new ArrayList<>();
 
     ArrayAdapter<String> adapter;
@@ -27,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         setListview();
+
 
     }
     public void onClick(View v){
@@ -44,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
                 dig.setTitle("취소?").setNegativeButton("예", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
+
                         Toast.makeText(getApplicationContext(),"삭제되었습니다.",Toast.LENGTH_SHORT).show();
                         CONNECT_LIST.remove(position);
 
@@ -65,7 +67,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent j = new Intent(MainActivity.this,Main3Activity.class);
-
+                if(position ==0){
+                    Toast.makeText(getApplicationContext(),"a"+sss.get(0),Toast.LENGTH_SHORT).show();
+                    j.putExtra("data",sss.get(0));
+                    startActivity(j);
+                }
+                else if (position == 1){
+                    Toast.makeText(getApplicationContext(),"a"+sss.get(1),Toast.LENGTH_SHORT).show();
+                }
 
             }
         });
@@ -83,6 +92,8 @@ public class MainActivity extends AppCompatActivity {
                 store = data.getParcelableArrayListExtra("array");
                 Toast.makeText(getApplicationContext(),"a"+store.toString(),Toast.LENGTH_SHORT).show();
                 CONNECT_LIST.add(name);
+                sss.add(store);
+
                 adapter = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,CONNECT_LIST);
                 listview.setAdapter(adapter);
             }

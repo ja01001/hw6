@@ -41,7 +41,7 @@ public class Main2Activity extends AppCompatActivity {
             String  f = hp.getText().toString();
             rb =  rgb.getCheckedRadioButtonId();
             data st = new data(a,b,c,d,e,f,rb);//2131427426~8 =순서 대로 체크
-            Toast.makeText(getApplicationContext(),""+st.toString(),Toast.LENGTH_SHORT).show();
+           // Toast.makeText(getApplicationContext(),""+st.toString(),Toast.LENGTH_SHORT).show();
             Intent getIn = getIntent();
             int asd = getIn.getIntExtra("data",1);
             if(asd ==1){

@@ -25,9 +25,13 @@ public class data implements Parcelable {
         this.ischecked = ischecked;
     }
 
-    public String getName() {
-        return name;
-    }
+    public String getName() {return name;}
+    public int getPhone(){return phone;}
+    public String getMenu1() {return menu1;    }
+    public String getMenu2() {return menu2;    }
+    public String getMenu3() {        return menu3;    }
+    public String gethp() {        return hp;    }
+    public int getIschecked(){return ischecked;}
 
     protected data(Parcel in) {
         name = in.readString();
