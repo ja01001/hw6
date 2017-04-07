@@ -18,7 +18,7 @@ public class Main3Activity extends AppCompatActivity {
     String ss,sss;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
+        setTitle("나의 맛집");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main3);
         tday =(TextView)findViewById(R.id.ssssss);
