@@ -15,7 +15,8 @@ public class data implements Parcelable {
     private String menu3="";
     private String hp="";
     private int ischecked=0;
-    public data(String name,int phone,String menu1,String menu2,String menu3,String hp, int ischecked){
+    private String day = "";
+    public data(String name,int phone,String menu1,String menu2,String menu3,String hp, int ischecked,String day){
         this.name = name;
         this.phone = phone;
         this.menu1 = menu1;
@@ -23,6 +24,7 @@ public class data implements Parcelable {
         this.menu3 = menu3;
         this.hp = hp;
         this.ischecked = ischecked;
+        this.day = day;
     }
 
     public String getName() {return name;}
@@ -32,6 +34,7 @@ public class data implements Parcelable {
     public String getMenu3() {        return menu3;    }
     public String gethp() {        return hp;    }
     public int getIschecked(){return ischecked;}
+    public String getday(){return day;}
 
     protected data(Parcel in) {
         name = in.readString();
@@ -41,6 +44,7 @@ public class data implements Parcelable {
         menu3 = in.readString();
         hp = in.readString();
         ischecked = in.readInt();
+        day = in.readString();
     }
 
     @Override
@@ -52,6 +56,7 @@ public class data implements Parcelable {
         dest.writeString(menu3);
         dest.writeString(hp);
         dest.writeInt(ischecked);
+        dest.writeString(day);
     }
 
     @Override
@@ -71,10 +76,5 @@ public class data implements Parcelable {
         }
     };
 
-    @Override
-    public String toString() {
-        String str = name +":"+phone+":"+menu1+":"+menu2+":"+menu3+":"+hp+":"+ischecked+":";
 
-        return str;
-    }
 }

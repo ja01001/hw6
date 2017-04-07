@@ -11,7 +11,9 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class Main2Activity extends AppCompatActivity {
 
@@ -34,13 +36,19 @@ public class Main2Activity extends AppCompatActivity {
     public void onClick(View v){
         if(v.getId() == R.id.btnAdd){
             String  a = n.getText().toString();
-            int  b = Integer.parseInt(tel.getText().toString());
+            String bb = tel.getText().toString();
+            int b =0;
+            if(bb.getBytes().length ==0){tel.requestFocus();}
+            else{ b = Integer.parseInt(bb);}
             String  c = m1.getText().toString();
             String  d = m2.getText().toString();
             String  e = m3.getText().toString();
             String  f = hp.getText().toString();
             rb =  rgb.getCheckedRadioButtonId();
-            data st = new data(a,b,c,d,e,f,rb);//2131427426~8 =순서 대로 체크
+            Date dt = new Date();
+            SimpleDateFormat form = new SimpleDateFormat("yyyyMMdd");
+            String str =form.format(dt);
+            data st = new data(a,b,c,d,e,f,rb,str);//2131427426~8 =순서 대로 체크
            // Toast.makeText(getApplicationContext(),""+st.toString(),Toast.LENGTH_SHORT).show();
             Intent getIn = getIntent();
             int asd = getIn.getIntExtra("data",1);

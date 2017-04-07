@@ -12,11 +12,12 @@
         android:background="#ffe5e5"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
         <ImageView
-            android:layout_margin="8dp"
             android:layout_width="40dp"
             android:layout_height="33dp"
-            android:src="@drawable/ch" />
+            android:layout_margin="8dp"
+            android:src="@drawable/potata" />
         <TextView
             android:id="@+id/tv"
             android:textStyle="bold"

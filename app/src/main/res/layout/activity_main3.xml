@@ -5,7 +5,7 @@
     android:id="@+id/activity_main2"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/ch"
+    android:background="@drawable/menu"
     android:gravity="center"
     android:orientation="vertical"
     android:padding="7dp">
@@ -31,7 +31,7 @@
             android:padding="3dp">
             <TextView
             android:layout_width="wrap_content"
-            android:id="@+id/txtname"
+            android:id="@+id/z"
             android:layout_height="wrap_content"
             android:layout_span="2"
             android:layout_weight="1"
@@ -42,7 +42,7 @@
         </TableRow>
         <TableRow android:padding="3dp">
             <ImageView
-                android:id="@+id/imgno"
+                android:id="@+id/im"
                 android:layout_width="50dp"
                 android:layout_height="68dp"
                 android:layout_weight="1"
@@ -53,21 +53,21 @@
                 android:layout_weight="1"
                 android:orientation="vertical">
                 <TextView
-                    android:id="@+id/etmenu1"
+                    android:id="@+id/zz"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="#ffffff"
                     android:text="메뉴1(가격)"
                     android:padding="3dp" />
                 <TextView
-                    android:id="@+id/etmenu2"
+                    android:id="@+id/zzz"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="#ffffff"
                     android:text="메뉴2(가격)"
                     android:padding="3dp" />
                 <TextView
-                    android:id="@+id/etmenu3"
+                    android:id="@+id/zzzz"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="#ffffff"
@@ -86,7 +86,7 @@
                 android:textSize="18dp"
                 android:textStyle="bold" />
             <TextView
-                android:id="@+id/tvTel"
+                android:id="@+id/zzzzz"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="2"
@@ -110,7 +110,7 @@
                 android:textSize="18dp"
                 android:textStyle="bold" />
             <TextView
-                android:id="@+id/tvURL"
+                android:id="@+id/zzzzzz"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="2"
@@ -132,7 +132,7 @@
                 android:gravity="right"
                 android:text="등록일:" />
             <TextView
-                android:id="@+id/tvRegdate"
+                android:id="@+id/ssssss"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_span="2"
