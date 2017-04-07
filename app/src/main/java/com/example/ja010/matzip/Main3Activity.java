@@ -53,7 +53,7 @@ public class Main3Activity extends AppCompatActivity {
     }
     public void onClick(View v){
         if(v.getId() ==R.id.imageView2){
-            Intent call = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:/"+ss));
+            Intent call = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:/0"+ss));
             startActivity(call);
         }
         else if(v.getId() == R.id.imageView3){
