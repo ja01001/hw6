@@ -15,8 +15,10 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
+    private static final int GET_CODE = 100;
     ListView listview;
     ArrayList<data> store = new ArrayList<>();
+    ArrayList<String> aaaa = new ArrayList<>();
     ArrayList<String> CONNECT_LIST = new ArrayList<>();
 
     ArrayAdapter<String> adapter;
@@ -28,8 +30,10 @@ public class MainActivity extends AppCompatActivity {
 
     }
     public void onClick(View v){
-        Intent i  = new Intent(this,Main2Activity.class);
-        startActivity(i);
+
+        Intent DATA_INPUT = new Intent(MainActivity.this,Main2Activity.class);
+        DATA_INPUT.putExtra("name",1);
+        startActivityForResult(DATA_INPUT,GET_CODE);
     }
     public void setListview(){
         listview =(ListView)findViewById(R.id.listview);
@@ -42,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
                     public void onClick(DialogInterface dialog, int which) {
                         Toast.makeText(getApplicationContext(),"삭제되었습니다.",Toast.LENGTH_SHORT).show();
                         CONNECT_LIST.remove(position);
+
                         adapter.notifyDataSetChanged();
                     }
                 });
@@ -52,8 +57,6 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
                 dig.show();
-
-
                 return false;
             }
         });
@@ -62,14 +65,29 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent j = new Intent(MainActivity.this,Main3Activity.class);
-                startActivity(j);
+
+
             }
         });
-        adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,CONNECT_LIST);
 
-        listview.setAdapter(adapter);
+
 
 
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if(requestCode == GET_CODE){
+            if(resultCode == RESULT_OK){
+                String name = data.getStringExtra("name");
+                store = data.getParcelableArrayListExtra("array");
+                Toast.makeText(getApplicationContext(),"a"+store.toString(),Toast.LENGTH_SHORT).show();
+                CONNECT_LIST.add(name);
+                adapter = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,CONNECT_LIST);
+                listview.setAdapter(adapter);
+            }
+
+        }
+        super.onActivityResult(requestCode, resultCode, data);
+    }
 }

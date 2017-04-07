@@ -53,6 +53,7 @@
                 android:text="종류:"
                 android:textSize="18dp" />
             <RadioGroup
+                android:id="@+id/rg"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"

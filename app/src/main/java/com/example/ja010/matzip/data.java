@@ -7,15 +7,15 @@ import android.os.Parcelable;
  * Created by ja010 on 17-04-06.
  */
 
-public class data implements Parcelable{
+public class data implements Parcelable {
     private String name="";
     private int phone = 0;
     private String menu1="";
     private String menu2="";
     private String menu3="";
     private String hp="";
-    private String ischecked="";
-    public data(String name,int phone,String menu1,String menu2,String menu3,String hp, String ischecked){
+    private int ischecked=0;
+    public data(String name,int phone,String menu1,String menu2,String menu3,String hp, int ischecked){
         this.name = name;
         this.phone = phone;
         this.menu1 = menu1;
@@ -36,7 +36,7 @@ public class data implements Parcelable{
         menu2 = in.readString();
         menu3 = in.readString();
         hp = in.readString();
-        ischecked = in.readString();
+        ischecked = in.readInt();
     }
 
     @Override
@@ -47,7 +47,7 @@ public class data implements Parcelable{
         dest.writeString(menu2);
         dest.writeString(menu3);
         dest.writeString(hp);
-        dest.writeString(ischecked);
+        dest.writeInt(ischecked);
     }
 
     @Override
