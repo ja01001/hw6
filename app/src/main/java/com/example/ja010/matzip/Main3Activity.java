@@ -37,7 +37,7 @@ public class Main3Activity extends AppCompatActivity {
         tm1.setText(""+store_data.get(0).getMenu1());
         tm2.setText(""+store_data.get(0).getMenu2());
         tm3.setText(""+store_data.get(0).getMenu3());
-        ttel.setText(""+ss);
+        ttel.setText("0"+ss);
         turl.setText(""+sss);
         tday.setText(""+store_data.get(0).getday());
         if(store_data.get(0).getIschecked() ==2131427426){
@@ -53,7 +53,7 @@ public class Main3Activity extends AppCompatActivity {
     }
     public void onClick(View v){
         if(v.getId() ==R.id.imageView2){
-            Intent call = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:/0"+ss));
+            Intent call = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:/"+ss));
             startActivity(call);
         }
         else if(v.getId() == R.id.imageView3){
