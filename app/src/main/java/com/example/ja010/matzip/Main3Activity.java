@@ -12,7 +12,6 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 public class Main3Activity extends AppCompatActivity {
-    ArrayList<data> store_data = new ArrayList<>();
     TextView tn,tm1,tm2,tm3,ttel,turl,tday;
     ImageView changeimg;
     String ss,sss;
@@ -29,25 +28,26 @@ public class Main3Activity extends AppCompatActivity {
         ttel = (TextView)findViewById(R.id.zzzzz);
         turl = (TextView)findViewById(R.id.zzzzzz);
         changeimg = (ImageView)findViewById(R.id.im);
-        Intent STORE_DATA = getIntent();
-        store_data = STORE_DATA.getParcelableArrayListExtra("data");
-        ss = String.valueOf(store_data.get(0).getPhone());
-        sss = store_data.get(0).gethp();
-        tn.setText(""+store_data.get(0).getName());
-        tm1.setText(""+store_data.get(0).getMenu1());
-        tm2.setText(""+store_data.get(0).getMenu2());
-        tm3.setText(""+store_data.get(0).getMenu3());
+
+        Intent intent = getIntent();
+        data r = intent.getParcelableExtra("r");
+        ss = String.valueOf(r.getPhone());
+        sss = r.gethp();
+        tn.setText(""+r.getName());
+        tm1.setText(""+r.getMenu1());
+        tm2.setText(""+r.getMenu2());
+        tm3.setText(""+r.getMenu3());
         ttel.setText("0"+ss);
         turl.setText(""+sss);
-        tday.setText(""+store_data.get(0).getday());
-        if(store_data.get(0).getIschecked() ==2131427426){
+        tday.setText(""+r.getday());
+        if(r.getIschecked() ==1){
         changeimg.setImageResource(R.drawable.ch);
         }
-        else if(store_data.get(0).getIschecked()==2131427427){
-            changeimg.setImageResource(R.drawable.ch);
+        else if(r.getIschecked()==2){
+            changeimg.setImageResource(R.drawable.pz);
         }
         else {
-            changeimg.setImageResource(R.drawable.ch);
+            changeimg.setImageResource(R.drawable.ham);
         }
 
     }

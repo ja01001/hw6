@@ -17,10 +17,9 @@ import java.util.Date;
 
 public class Main2Activity extends AppCompatActivity {
 
-    ArrayList<data> store = new ArrayList<>();
     EditText n,tel,m1,m2,m3,hp;
     int rb;
-    RadioGroup rgb;
+    RadioButton r1,r2,r3;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,7 +30,9 @@ public class Main2Activity extends AppCompatActivity {
         m2 = (EditText)findViewById(R.id.etmenu2);
         m3 = (EditText)findViewById(R.id.etmenu3);
         hp = (EditText)findViewById(R.id.etaddr);
-        rgb = (RadioGroup)findViewById(R.id.rg);
+        r1 = (RadioButton)findViewById(R.id.r1);
+        r2 = (RadioButton)findViewById(R.id.r2);
+        r3 = (RadioButton)findViewById(R.id.r3);
     }
     public void onClick(View v){
         if(v.getId() == R.id.btnAdd){
@@ -44,7 +45,16 @@ public class Main2Activity extends AppCompatActivity {
             String  d = m2.getText().toString();
             String  e = m3.getText().toString();
             String  f = hp.getText().toString();
-            rb =  rgb.getCheckedRadioButtonId();
+
+            if(r1.isChecked() == true){
+                rb = 1;
+            }
+            else if(r2.isChecked()==true){
+                rb =2;
+            }
+            else if(r3.isChecked()==true){
+                rb = 3;
+            }
             Date dt = new Date();
             SimpleDateFormat form = new SimpleDateFormat("yyyyMMdd");
             String str =form.format(dt);
@@ -53,10 +63,8 @@ public class Main2Activity extends AppCompatActivity {
             Intent getIn = getIntent();
             int asd = getIn.getIntExtra("data",1);
             if(asd ==1){
-                store.add(st);
-                String name = st.getName();
-                getIn.putExtra("name",name);
-                getIn.putParcelableArrayListExtra("array",store);
+
+                getIn.putExtra("array",st);
                 setResult(RESULT_OK,getIn);
             }
 

@@ -76,5 +76,4 @@ public class data implements Parcelable {
         }
     };
 
-
 }

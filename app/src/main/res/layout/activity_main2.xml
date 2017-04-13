@@ -60,7 +60,7 @@
                 android:orientation="horizontal">
                 <RadioButton
                     android:checked="true"
-                    android:id="@+id/radio1"
+                    android:id="@+id/r1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
                 <ImageView
@@ -68,7 +68,7 @@
                     android:layout_height="68dp"
                     android:src="@drawable/ch" />
                 <RadioButton
-                    android:id="@+id/radio2"
+                    android:id="@+id/r2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
                 <ImageView
@@ -76,7 +76,7 @@
                     android:layout_height="68dp"
                     android:src="@drawable/pz" />
                 <RadioButton
-                    android:id="@+id/radio3"
+                    android:id="@+id/r3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
                 <ImageView
