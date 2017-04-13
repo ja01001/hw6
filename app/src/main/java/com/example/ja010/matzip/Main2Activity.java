@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -19,6 +20,7 @@ public class Main2Activity extends AppCompatActivity {
 
     EditText n,tel,m1,m2,m3,hp;
     int rb;
+    CheckBox cc;
     RadioButton r1,r2,r3;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +35,7 @@ public class Main2Activity extends AppCompatActivity {
         r1 = (RadioButton)findViewById(R.id.r1);
         r2 = (RadioButton)findViewById(R.id.r2);
         r3 = (RadioButton)findViewById(R.id.r3);
+        cc = (CheckBox)findViewById(R.id.CB);
     }
     public void onClick(View v){
         if(v.getId() == R.id.btnAdd){
@@ -45,7 +48,7 @@ public class Main2Activity extends AppCompatActivity {
             String  d = m2.getText().toString();
             String  e = m3.getText().toString();
             String  f = hp.getText().toString();
-
+            int cc1 =0;
             if(r1.isChecked() == true){
                 rb = 1;
             }
@@ -55,10 +58,11 @@ public class Main2Activity extends AppCompatActivity {
             else if(r3.isChecked()==true){
                 rb = 3;
             }
+
             Date dt = new Date();
             SimpleDateFormat form = new SimpleDateFormat("yyyyMMdd");
             String str =form.format(dt);
-            data st = new data(a,b,c,d,e,f,rb,str);//2131427426~8 =순서 대로 체크
+            data st = new data(a,b,c,d,e,f,rb,str,cc1);//2131427426~8 =순서 대로 체크
            // Toast.makeText(getApplicationContext(),""+st.toString(),Toast.LENGTH_SHORT).show();
             Intent getIn = getIntent();
             int asd = getIn.getIntExtra("data",1);

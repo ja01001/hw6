@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -24,11 +26,14 @@ public class MainActivity extends AppCompatActivity {
     ArrayList<String> CONNECT_LIST = new ArrayList<String>();
   //  ArrayAdapter adapter;
     dataAdapter ad;
+    Button bb,bbs;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        bb = (Button)findViewById(R.id.b4);
+        bbs = (Button)findViewById(R.id.b5);
         setListview();
 
 
@@ -46,6 +51,8 @@ public class MainActivity extends AppCompatActivity {
             ad.MENU_ASC_SORT();
         }
         else if (v.getId() == R.id.b4){
+            bb.setVisibility(v.GONE);
+            bbs.setVisibility(v.VISIBLE);
 
         }
     }
@@ -85,7 +92,6 @@ public class MainActivity extends AppCompatActivity {
                 data r =sss.get(position);
                 j.putExtra("r",r);
                 startActivity(j);
-
             }
         });
     }
