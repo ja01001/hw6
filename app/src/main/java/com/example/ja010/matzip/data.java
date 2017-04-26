@@ -17,6 +17,7 @@ public class data implements Parcelable {
     private int ischecked=0;
     private String day = "";
     private int ch = 0;
+    boolean ct = false;
     public data(String name,int phone,String menu1,String menu2,String menu3,String hp, int ischecked,String day,int ch){
         this.name = name;
         this.phone = phone;

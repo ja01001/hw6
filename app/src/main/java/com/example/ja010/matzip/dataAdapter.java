@@ -5,25 +5,29 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
+
 
 import java.util.ArrayList;
-import java.util.Collection;
+
 import java.util.Collections;
 import java.util.Comparator;
 
 /**
  * Created by ja010 on 17-04-13.
  */
-
 public class dataAdapter extends BaseAdapter{
     ArrayList<data> nd = new ArrayList<data>();
     Context context;
+    static boolean cb = false;
+
+
     public dataAdapter( ArrayList<data> nd,Context context){
         this.nd =nd;
         this.context = context;
+
 
     }
 
@@ -52,6 +56,7 @@ public class dataAdapter extends BaseAdapter{
             TextView tv1 = (TextView) convertView.findViewById(R.id.tl1);
             TextView tv2 = (TextView) convertView.findViewById(R.id.tl2);
             ImageView im = (ImageView)convertView.findViewById(R.id.il1);
+            CheckBox checkBox = (CheckBox)convertView.findViewById(R.id.CB);
             tv1.setText(one.getName());
             tv2.setText(""+one.getPhone());
             if(one.getIschecked() ==1){
@@ -63,11 +68,16 @@ public class dataAdapter extends BaseAdapter{
             else {
                 im.setImageResource(R.drawable.ham);
             }
-
-
-
+        if(cb){
+            checkBox.setVisibility(CheckBox.VISIBLE);
+        }
+        else{
+            checkBox.setVisibility(CheckBox.INVISIBLE);
+        }
+        one.ct = checkBox.isChecked()?true:false;
         return convertView;
     }
+
     // 비교
     Comparator<data> nameASC = new Comparator<data>() {
         @Override

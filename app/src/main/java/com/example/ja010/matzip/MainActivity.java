@@ -26,14 +26,15 @@ public class MainActivity extends AppCompatActivity {
     ArrayList<String> CONNECT_LIST = new ArrayList<String>();
   //  ArrayAdapter adapter;
     dataAdapter ad;
-    Button bb,bbs;
+    Button bb;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         bb = (Button)findViewById(R.id.b4);
-        bbs = (Button)findViewById(R.id.b5);
+
         setListview();
 
 
@@ -51,40 +52,43 @@ public class MainActivity extends AppCompatActivity {
             ad.MENU_ASC_SORT();
         }
         else if (v.getId() == R.id.b4){
-            bb.setVisibility(v.GONE);
-            bbs.setVisibility(v.VISIBLE);
-
+            if(dataAdapter.cb){
+                bb.setText("맛집 삭제");
+                dataAdapter.cb = false;
+                AlertDialog.Builder dlg = new AlertDialog.Builder(this);
+                dlg.setTitle("삭제")
+                        .setPositiveButton("취소",null)
+                        .setMessage("선택한 항목들을 정말로 삭제하시겠습니까?")
+                        .setIcon(R.drawable.pz)
+                        .setNegativeButton("확인", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                for(int i=0; i<sss.size(); i++)
+                                    if(sss.get(i).ct)
+                                        sss.remove(i);
+                                ad.notifyDataSetChanged();
+                                Toast.makeText(getApplicationContext(),"전부 삭제되었습니다..",Toast.LENGTH_SHORT).show();
+                                bb.setText("선택");
+                            }
+                        }).show();
+                ad.notifyDataSetChanged();
+            }else{
+                ad.notifyDataSetChanged();
+                if(ad.getCount() == 0){
+                    Toast.makeText(getApplicationContext(),"삭제 할 목록이 없습니다..",Toast.LENGTH_SHORT).show();
+                }else {
+                    bb.setText("맛집 삭제");
+                    dataAdapter.cb = true;
+                }
+            }
         }
+
     }
     public void setListview(){
         listview =(ListView)findViewById(R.id.listview);
        // adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,CONNECT_LIST);
         ad = new dataAdapter(sss,this);
         listview.setAdapter(ad);
-        listview.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
-            @Override
-            public boolean onItemLongClick(final AdapterView<?> parent, View view, final int position, long id) {
-                AlertDialog.Builder dig = new AlertDialog.Builder(MainActivity.this);
-                dig.setTitle("삭제하시겠습니까?").setNegativeButton("예", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-
-                        Toast.makeText(getApplicationContext(),"삭제되었습니다.",Toast.LENGTH_SHORT).show();
-                        CONNECT_LIST.remove(position);
-                        sss.remove(position);
-                        ad.notifyDataSetChanged();
-                    }
-                });
-                dig.setPositiveButton("아니오", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        Toast.makeText(getApplicationContext(),"원상태로.",Toast.LENGTH_SHORT).show();
-                    }
-                });
-                dig.show();
-                return true;
-            }
-        });
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
