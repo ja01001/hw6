@@ -5,20 +5,15 @@ import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
-
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-
 public class MainActivity extends AppCompatActivity {
     private static final int GET_CODE = 100;
     ListView listview;
@@ -27,17 +22,33 @@ public class MainActivity extends AppCompatActivity {
   //  ArrayAdapter adapter;
     dataAdapter ad;
     Button bb;
-
+    EditText e1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         bb = (Button)findViewById(R.id.b4);
-
+        e1 = (EditText)findViewById(R.id.et);
+        e1.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+            }
+            @Override
+            public void afterTextChanged(Editable s) {
+                String search = s.toString();
+                if(search.length()>0){
+                    listview.setFilterText(search);
+                }
+                else{
+                    listview.clearTextFilter();
+                }
+            }
+        });
         setListview();
-
-
     }
     public void onClick(View v){
         if(v.getId()==R.id.b1) {
@@ -59,16 +70,16 @@ public class MainActivity extends AppCompatActivity {
                 dlg.setTitle("삭제")
                         .setPositiveButton("취소",null)
                         .setMessage("선택한 항목들을 정말로 삭제하시겠습니까?")
-                        .setIcon(R.drawable.pz)
                         .setNegativeButton("확인", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 for(int i=0; i<sss.size(); i++)
-                                    if(sss.get(i).ct)
+                                    if(sss.get(i).ct){
                                         sss.remove(i);
-                                ad.notifyDataSetChanged();
+                                }
                                 Toast.makeText(getApplicationContext(),"전부 삭제되었습니다..",Toast.LENGTH_SHORT).show();
                                 bb.setText("선택");
+                                ad.notifyDataSetChanged();
                             }
                         }).show();
                 ad.notifyDataSetChanged();
@@ -79,10 +90,11 @@ public class MainActivity extends AppCompatActivity {
                 }else {
                     bb.setText("맛집 삭제");
                     dataAdapter.cb = true;
+                    ad.notifyDataSetChanged();
                 }
+                ad.notifyDataSetChanged();
             }
         }
-
     }
     public void setListview(){
         listview =(ListView)findViewById(R.id.listview);
@@ -99,19 +111,15 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if(requestCode == GET_CODE){
             if(resultCode == RESULT_OK){
-
                 data store = data.getParcelableExtra("array");//정의된 data ("array");
                 CONNECT_LIST.add(store.getName());
                 sss.add(store);
                 ad.notifyDataSetChanged();
-
             }
-
         }
     }
 }

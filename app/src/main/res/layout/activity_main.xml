@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+
     android:padding="5dp">
     <LinearLayout
         android:padding="5dp"
@@ -59,7 +60,7 @@
 
         <EditText
 
-            android:id="@+id/editText"
+            android:id="@+id/et"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -69,6 +70,7 @@
     </LinearLayout>
     <ListView
         android:id="@+id/listview"
+        android:textFilterEnabled="false"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 </LinearLayout>
